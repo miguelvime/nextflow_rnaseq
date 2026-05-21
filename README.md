@@ -17,10 +17,12 @@ sudo apt install pigz
 
 Esto descarga los fastq y los comprime. El resultado debería ser:
 
+```text
 Data/
-|__SRR*/ 
-    |__SRR*_1.fastq.gz
-    |__SRR*_2.fastq.gz
-    |__SRR*.sra
+└── SRR*/  
+    ├── SRR*_1.fastq.gz
+    ├── SRR*_2.fastq.gz
+    └── SRR*.sra
+```
 
-Habría 8SRR*/ una por cada muestra
+Habría 8 carpetas SRR*/, una por cada muestra
