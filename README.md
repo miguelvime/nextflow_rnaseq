@@ -15,4 +15,12 @@ sudo apt install pigz
 ./scripts/download_data.sh 
 ```
 
-Esto descarga los fastq y los comprime.
+Esto descarga los fastq y los comprime. El resultado debería ser:
+
+Data/
+|__SRR*/ 
+    |__SRR*_1.fastq.gz
+    |__SRR*_2.fastq.gz
+    |__SRR*.sra
+
+Habría 8SRR*/ una por cada muestra
