@@ -26,3 +26,29 @@ Data/
 ```
 
 Habría 8 carpetas SRR*/, una por cada muestra
+
+
+## 2. Configuración del pipeline
+
+El pipeline está construido en Nextflow DSL2 con Docker. 
+Se ejecuta con un único comando:
+
+```bash
+nextflow run scripts/main.nf -profile docker
+```
+
+## 3. Control de calidad — FastQC
+
+FastQC analiza la calidad de las lecturas FASTQ de cada muestra en paralelo.
+Los resultados (ficheros `.zip` y `.html`) se integran en el informe MultiQC final.
+
+- Módulo: `scripts/modules/fastqc.nf`
+- Imagen Docker: `biocontainers/fastqc:0.12.1--hdfd78af_0`
+
+## 4. Eliminación de adaptadores — Trimmomatic
+
+Trimmomatic elimina adaptadores Illumina y bases de baja calidad de las lecturas paired-end.
+Los logs se integran en el informe MultiQC final.
+
+- Módulo: `scripts/modules/trimmomatic.nf`
+- Imagen Docker: `biocontainers/trimmomatic:0.39--hdfd78af_2`
