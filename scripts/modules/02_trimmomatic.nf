@@ -1,5 +1,5 @@
 /*
- * modules/trimmomatic.nf
+ * modules/02_trimmomatic.nf
  * Elimina adaptadores y bases de baja calidad.
  */
 
@@ -7,7 +7,7 @@ process TRIMMOMATIC {
 
     tag "$sample_id"
 
-    container 'biocontainers/trimmomatic:0.39--hdfd78af_2'
+    container 'quay.io/biocontainers/trimmomatic:0.39--hdfd78af_2'
 
     publishDir "${params.outdir}/trimmomatic", mode: 'copy'
 

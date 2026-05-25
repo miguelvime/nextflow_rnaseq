@@ -7,9 +7,9 @@
 nextflow.enable.dsl = 2
 
 // Importar módulos
-include { FASTQC as FASTQC_RAW  } from './modules/fastqc'
-include { FASTQC as FASTQC_TRIM } from './modules/fastqc'
-include { TRIMMOMATIC           } from './modules/trimmomatic'
+include { FASTQC as FASTQC_RAW  } from './modules/01_fastqc'
+include { FASTQC as FASTQC_TRIM } from './modules/01_fastqc'
+include { TRIMMOMATIC           } from './modules/02_trimmomatic'
 
 // Leer samplesheet
 def parse_samplesheet(csv_path) {
