@@ -26,7 +26,7 @@ Ejecuta los scripts con:
 ./scripts/prepare_genome.sh
 ```
 
-Esto descarga los fastq y los comprime. El resultado debería ser:
+Esto descarga los fastq y los comprime y descarga el genoma de referencia. El resultado debería ser:
 
 ```text
 Data/
@@ -39,16 +39,10 @@ Data/
 
 ```
 
-Habría 8 carpetas SRR*/, una por cada muestra
+Habría 8 carpetas SRR*/, una por cada muestra y una carpeta genome con el genoma de referencia
 
-Además descarga el genoma de referencia
 
-### Descarga el genoma de referencia 
-```bash
-# 1. Ejecutar el script de descarga e indexación
-bash scripts/prepare_genome.sh
 
-```
 ## 2. Configuración del pipeline
 
 El pipeline está construido en Nextflow DSL2 con Docker. 
