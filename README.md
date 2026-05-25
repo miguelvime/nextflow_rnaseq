@@ -68,4 +68,34 @@ Los logs se integran en el informe MultiQC final.
 - Módulo: `scripts/modules/trimmomatic.nf`
 - Imagen Docker: `biocontainers/trimmomatic:0.39--hdfd78af_2`
 
-## 5. Alineamiento con STAR
+## 5. Ejecución del pipeline
+
+Con Docker y Nextflow instalados, desde la carpeta `nextflow_rnaseq/`:
+
+```bash
+nextflow run scripts/main.nf -profile docker
+```
+
+Para reanudar una ejecución interrumpida:
+
+```bash
+nextflow run scripts/main.nf -profile docker -resume
+```
+
+## 6. Resultados
+
+Los resultados se guardan en `results/`:
+
+results/
+├── fastqc/       → informes de calidad de lecturas crudas y trimadas
+└── trimmomatic/  → lecturas limpias y logs de trimming
+
+
+## Notas importantes
+
+- Las imágenes Docker usan `quay.io` (no `docker.io`)
+- Memoria recomendada: mínimo 8 GB RAM
+- Tiempo de ejecución aproximado: 1.5 horas para las 8 muestras
+
+## 7. Alineamiento con STAR
+
