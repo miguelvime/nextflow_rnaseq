@@ -11,5 +11,5 @@ wget -P data/genome "https://ftp.ensembl.org/pub/release-111/fasta/homo_sapiens/
 wget -P data/genome "https://ftp.ensembl.org/pub/release-111/gtf/homo_sapiens/Homo_sapiens.GRCh38.111.gtf.gz"
 
 # 4. Descomprimir ambos archivos (STAR y otras herramientas prefieren el texto plano para indexar)
-gunzip data/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-gunzip data/genome/Homo_sapiens.GRCh38.111.gtf.gz
+gunzip data/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz > data/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+gunzip data/genome/Homo_sapiens.GRCh38.111.gtf.gz > data/genome/Homo_sapiens.GRCh38.111.gtf
