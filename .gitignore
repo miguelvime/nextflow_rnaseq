@@ -4,3 +4,4 @@ data/*
 .nextflow.log*
 results/*
 logs/*  
+.nextflow

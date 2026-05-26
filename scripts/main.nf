@@ -30,7 +30,6 @@ workflow {
 
     // 1. Leer muestras
     reads_ch = parse_samplesheet(params.samplesheet)
-    reads_ch.view { sid, r1, r2 -> "[DEBUG] Input for FASTQC_RAW: [${sid}, ${r1.name}, ${r2.name}]" }
 
     // 2. FastQC sobre lecturas crudas
     FASTQC_RAW(reads_ch)
