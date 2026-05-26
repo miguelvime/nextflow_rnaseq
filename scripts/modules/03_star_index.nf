@@ -3,7 +3,7 @@
 *
 */
 
-process STAR_index {
+process STAR_INDEX {
 
     tag "${genome_fasta.baseName}"
 
@@ -13,7 +13,7 @@ process STAR_index {
 
     input:
     path genome_fasta
-    path gtf_file
+    path genome_gtf
 
     output:
     path "star_index", emit: star_index
@@ -21,17 +21,21 @@ process STAR_index {
 
     script:
     """
-    STAR \\
-        --runThreadN ${task.cpus} \\
-        --runMode genomeGenerate \\
-        --genomeDir star_index \\
-        --genomeFastaFiles ${genome_fasta} \\
-        --sjdbGTFfile ${gtf_file} \\
-        --sjdbOverhang 100
+    if /data/star_index exists; then
+        echo "STAR index already exists. Skipping STAR index generation."
+        exit 0
+    else:
+        STAR \\
+            --runThreadN ${task.cpus} \\
+            --runMode genomeGenerate \\
+            --genomeDir star_index \\
+            --genomeFastaFiles ${genome_fasta} \\
+            --sjdbGTFfile ${genome_gtf} \\
+            --sjdbOverhang 100
 
-    cat <<-END_VERSIONS > versions.yml
-    '${task.process}':
-        star: \$(STAR --version | sed 's/STAR_//')
-    END_VERSIONS
+        cat <<-END_VERSIONS > versions.yml
+        '${task.process}':
+            star: \$(STAR --version | sed 's/STAR_//')
+        END_VERSIONS
     """
 }

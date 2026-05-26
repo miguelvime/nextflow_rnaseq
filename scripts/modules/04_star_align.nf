@@ -3,7 +3,7 @@
 *
 */
 
-process STAR_alignment {
+process STAR_ALIGN {
 
     tag "${sample_id}"
 

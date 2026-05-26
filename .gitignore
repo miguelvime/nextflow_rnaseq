@@ -1,3 +1,6 @@
 reference/
 data/*
 !data/SRR_Acc_List.txt
+.nextflow.log*
+results/*
+logs/*  
