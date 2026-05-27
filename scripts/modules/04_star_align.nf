@@ -7,19 +7,18 @@ process STAR_ALIGN {
 
     tag "${sample_id}"
 
-    container 'biocontainers/star:2.7.11b--h5ca1c30_8'
+    container 'quay.io/biocontainers/star:2.7.11b--h5ca1c30_8'
 
-    publishDir "${params.outdir}/star_alignment/${sample_id}", mode: 'copy', pattern: "${sample_id}.*"
+    publishDir "${params.outdir}/star_alignment", mode: 'copy'
 
     input:
-    tuple val(sample_id), path(reads)
-    path star_index
+    tuple val(sample_id), path(r1), path(r2) // Paired reads from TRIMMOMATIC
+    path star_index // Receive the index from STAR_INDEX
 
     output:
     tuple val(sample_id), path("${sample_id}.Aligned.sortedByCoord.out.bam"), emit: bam
     tuple val(sample_id), path("${sample_id}.Log.final.out"), emit: log
     tuple val(sample_id), path("${sample_id}.SJ.out.tab"), emit: sj_out
-    path "versions.yml", emit: versions
 
     script:
     def prefix = sample_id
@@ -27,15 +26,9 @@ process STAR_ALIGN {
     STAR \\
         --runThreadN ${task.cpus} \\
         --genomeDir ${star_index} \\
-        --readFilesIn ${reads} \\
+        --readFilesIn ${r1} ${r2} \\
         --readFilesCommand zcat \\
         --outFileNamePrefix "${prefix}." \\
         --outSAMtype BAM SortedByCoordinate
-
-    cat <<-END_VERSIONS > versions.yml
-    '${task.process}':
-        star: \$(STAR --version | sed 's/STAR_//')
-    END_VERSIONS
     """
 }
-    
