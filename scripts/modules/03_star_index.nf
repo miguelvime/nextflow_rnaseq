@@ -22,13 +22,14 @@ process STAR_INDEX {
     script:
     
     """
+    mkdir -p star_index
     STAR \\
         --runThreadN ${task.cpus} \\
         --runMode genomeGenerate \\
         --genomeDir star_index \\
         --genomeFastaFiles ${genome_fasta} \\
         --sjdbGTFfile ${genome_gtf} \\
-        --sjdbOverhang 62
+        --sjdbOverhang 62 \\
         --genomeSAsparseD 1
 
     cat <<-END_VERSIONS > versions.yml
