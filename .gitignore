@@ -5,5 +5,5 @@ data/*
 results/*
 logs/*  
 .nextflow
-.work/*
+work/*
 
