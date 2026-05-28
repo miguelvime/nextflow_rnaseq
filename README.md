@@ -81,14 +81,19 @@ Para reanudar una ejecución interrumpida:
 ```bash
 nextflow run scripts/main.nf -profile docker -resume
 ```
+## 6. Alineamiento con STAR
+    La RAM no da para hacer el paso completo, mientras estamos en fase de testeo he cortado el genoma de referencia. Cuando lo pasemos por Picasso hay que:
+     - Quitar las lineas de prepare_genome.sh que recortan los cromosomas
+     - Cambiar la ruta de nextflow config para que apunte a los genomas de referencia completos
 
-## 6. Resultados
+## 7. Resultados
 
 Los resultados se guardan en `results/`:
 
 results/
 ├── fastqc/       → informes de calidad de lecturas crudas y trimadas
 └── trimmomatic/  → lecturas limpias y logs de trimming
+|__star_alignment/ -> BAM, logs, tab
 
 
 ## Notas importantes
@@ -97,7 +102,3 @@ results/
 - Memoria recomendada: mínimo 8 GB RAM
 - Tiempo de ejecución aproximado: 1.5 horas para las 8 muestras
 
-## 7. Alineamiento con STAR
-    La RAM no da para hacer el paso completo, mientras estamos en fase de testeo he cortado el genoma de referencia. Cuando lo pasemos por Picasso hay que:
-     - Quitar las lineas de prepare_genome.sh que recortan los cromosomas
-     - Cambiar la ruta de nextflow config para que apunte a los genomas de referencia completos
