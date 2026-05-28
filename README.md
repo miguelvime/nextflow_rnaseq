@@ -45,9 +45,10 @@ Habría 8 carpetas SRR*/, una por cada muestra y una carpeta genome con el genom
 
 
 ## 2. Configuración del pipeline
-Tenemos la opción de correrlo con docker o con Singularity (para picasso).
+Tenemos la opción de correrlo con docker o con Singularity (si es necesario para picasso).
 
-El pipeline está construido en Nextflow DSL2 con Docker. 
+El pipeline está construido en Nextflow DSL2 con Docker. Si Picasso usara docker y no singularity deberíamos cambiar los recursos reservados para los módulos en @nextflow.config.
+
 Se ejecuta con un único comando:
 
 **opción docker**
