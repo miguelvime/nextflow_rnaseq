@@ -59,7 +59,7 @@ nextflow run scripts/main.nf -profile docker
 **opción picasso (singularity)**
 
 ```bash
-nextflow run scripts/main.nf -profile singularity
+nextflow run scripts/main.nf -profile picasso
 ```
 Solo una vez, luego puedo reaunudar la ejecución añadiéndole -resume siempre que no haya borrado la carpeta work o haya forzado la interrupción 
 
@@ -69,7 +69,7 @@ nextflow run scripts/main.nf -profile docker -resume
 o
 
 ```bash
-nextflow run scripts/main.nf -profile singularity -resume
+nextflow run scripts/main.nf -profile picasso -resume
 ```
 
 ## 3. Control de calidad — FastQC
