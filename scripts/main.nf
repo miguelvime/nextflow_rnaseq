@@ -11,7 +11,8 @@ include { FASTQC as FASTQC_RAW  } from './modules/01_fastqc'
 include { FASTQC as FASTQC_TRIM } from './modules/01_fastqc'
 include { TRIMMOMATIC           } from './modules/02_trimmomatic'
 include { STAR_INDEX            } from './modules/03_star_index'
-include { STAR_ALIGN             } from './modules/04_star_align'
+include { STAR_ALIGN            } from './modules/04_star_align'
+include { SAMTOOLS              } from './modules/05_samtools'
 
 // Leer samplesheet
 def parse_samplesheet(csv_path) {
@@ -48,4 +49,7 @@ workflow {
 
     // 6. STAR Alignment
     STAR_ALIGN(TRIMMOMATIC.out.trimmed_reads, STAR_INDEX.out.star_index)
+
+    // 7. samtools
+    SAMTOOLS(STAR_ALIGN.out.bams)
 }
