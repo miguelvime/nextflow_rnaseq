@@ -51,5 +51,5 @@ workflow {
     STAR_ALIGN(TRIMMOMATIC.out.trimmed_reads, STAR_INDEX.out.star_index)
 
     // 7. samtools
-    SAMTOOLS(STAR_ALIGN.out.bams)
+    SAMTOOLS(STAR_ALIGN.out.bam)
 }
