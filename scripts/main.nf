@@ -14,6 +14,8 @@ include { STAR_INDEX            } from './modules/03_star_index'
 include { STAR_ALIGN            } from './modules/04_star_align'
 include { SAMTOOLS              } from './modules/05_samtools'
 
+include { FEATURECOUNTS          } from './modules/07_featurecounts'
+
 // Leer samplesheet
 def parse_samplesheet(csv_path) {
     Channel
@@ -55,4 +57,8 @@ workflow {
 
     // 7. SAMtools: sort, index, flagstat
     SAMTOOLS(STAR_ALIGN.out.bam)
+
+    // 9. FeatureCounts
+    bams_collected = PICARD.out.bam.map{it[1]}.collect() // Recolectamos todos los bams para featurecounts
+    FEATURECOUNTS(bams_collected, params.genome_gtf) // Tomamos el output bam de 06_picard
 }
