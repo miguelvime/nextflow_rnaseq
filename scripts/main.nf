@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 /*
  * main.nf — Pipeline RNA-seq GSE52778
- * Por ahora: FastQC + Trimmomatic
+ * FastQC + Trimmomatic + STAR + SAMtools
  */
 
 nextflow.enable.dsl = 2
@@ -11,7 +11,8 @@ include { FASTQC as FASTQC_RAW  } from './modules/01_fastqc'
 include { FASTQC as FASTQC_TRIM } from './modules/01_fastqc'
 include { TRIMMOMATIC           } from './modules/02_trimmomatic'
 include { STAR_INDEX            } from './modules/03_star_index'
-include { STAR_ALIGN             } from './modules/04_star_align'
+include { STAR_ALIGN            } from './modules/04_star_align'
+include { SAMTOOLS              } from './modules/05_samtools'
 
 // Leer samplesheet
 def parse_samplesheet(csv_path) {
@@ -37,15 +38,21 @@ workflow {
     // 3. Trimmomatic
     TRIMMOMATIC(reads_ch)
 
-    // Use a general view() to see the structure of the Trimmomatic output
-    TRIMMOMATIC.out.trimmed_reads.view { item -> "[DEBUG] Input for FASTQC_TRIM: ${item}" }
-
     // 4. FastQC sobre lecturas trimadas
     FASTQC_TRIM(TRIMMOMATIC.out.trimmed_reads)
 
     // 5. STAR Index
-    STAR_INDEX(params.genome_fasta,params.genome_gtf)
+    STAR_INDEX(
+        file(params.genome_fasta),
+        file(params.genome_gtf)
+    )
 
     // 6. STAR Alignment
-    STAR_ALIGN(TRIMMOMATIC.out.trimmed_reads, STAR_INDEX.out.star_index)
+    STAR_ALIGN(
+        TRIMMOMATIC.out.trimmed_reads,
+        STAR_INDEX.out.star_index
+    )
+
+    // 7. SAMtools: sort, index, flagstat
+    SAMTOOLS(STAR_ALIGN.out.bam)
 }
