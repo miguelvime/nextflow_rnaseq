@@ -101,3 +101,12 @@ results/
     La RAM no da para hacer el paso completo, mientras estamos en fase de testeo he cortado el genoma de referencia. Cuando lo pasemos por Picasso hay que:
      - Quitar las lineas de prepare_genome.sh que recortan los cromosomas
      - Cambiar la ruta de nextflow config para que apunte a los genomas de referencia completos
+## 8. SAMtools — Ordenación e indexado
+
+SAMtools procesa los BAMs de STAR:
+- Ordena por coordenadas genómicas
+- Crea el índice `.bai`
+- Calcula métricas de alineamiento (`flagstat`) → van a MultiQC
+
+- Módulo: `scripts/modules/05_samtools.nf`
+- Imagen Docker: `quay.io/biocontainers/samtools:1.19.2--h50ea8bc_1`
