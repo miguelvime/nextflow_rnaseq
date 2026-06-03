@@ -15,6 +15,7 @@ include { STAR_ALIGN            } from './modules/04_star_align'
 include { SAMTOOLS              } from './modules/05_samtools'
 
 include { FEATURECOUNTS          } from './modules/07_featurecounts'
+include { MULTIQC                } from './modules/08_multiQC'
 
 // Leer samplesheet
 def parse_samplesheet(csv_path) {
@@ -58,7 +59,23 @@ workflow {
     // 7. SAMtools: sort, index, flagstat
     SAMTOOLS(STAR_ALIGN.out.bam)
 
+    // 8. Picard: MarkDuplicates
+    PICARD(SAMTOOLS.out.sorted_bam)
+
     // 9. FeatureCounts
     bams_collected = PICARD.out.bam.map{it[1]}.collect() // Recolectamos todos los bams para featurecounts
     FEATURECOUNTS(bams_collected, params.genome_gtf) // Tomamos el output bam de 06_picard
+
+    // 10. MultiQC (informe final de calidad)
+    ch_multiqc_inputs = Channel.empty()
+        .mix( FASTQC_RAW.out.zip.map { it[1] } )
+        .mix( FASTQC_TRIM.out.zip.map { it[1] } )
+        .mix( TRIMMOMATIC.out.log.map { it[1] } )
+        .mix( STAR_ALIGN.out.log.map { it[1] } )
+        .mix( SAMTOOLS.out.flagstat.map { it[1] } )
+        .mix( FEATURECOUNTS.out.summary)
+    .collect()
+    
+    MULTIQC(ch_multiqc_inputs)
+    
 }
