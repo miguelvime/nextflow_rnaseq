@@ -7,6 +7,9 @@
   - [Estructura de archivos](#estructura-de-archivos)
   - [Parámetros utilizados](#parámetros-utilizados)
   - [Descripción del pipeline](#descripción-del-pipeline)
+  - [Resultados](#resultados)
+  - [Interpretación](#interpretación)
+  - [Instrucciones de reproducción](#instrucciones-de-reproducción)
   - [Módulos y parámetros utilizados](#módulos-y-parámetros-utilizados)
     - [Índice de módulos](#índice-de-módulos)
     - [FastQC](#fastqc)
@@ -37,13 +40,18 @@ scripts/
 
 ## Parámetros utilizados
 
-
-
 ## Descripción del pipeline
 
 Este pipeline puede  analizar datos de secuenciación de RNA de organismos con un genoma de referencia anotado. 
  - **Input**: la lista de muestras de un samplesheet.csv y los archivos FASTQ resultado de la secuenciación
  - **Output**: una matriz de expresión génica y un informe de control de calidad.
+
+<<<<<<< HEAD
+## Resultados
+
+## Interpretación
+
+## Instrucciones de reproducción
 
 ## Módulos y parámetros utilizados
 
@@ -85,6 +93,7 @@ Este pipeline puede  analizar datos de secuenciación de RNA de organismos con u
 ### MultiQC
 
 ### R
+
 
 
 *//nextflow run main.nf -with-dag flowchart.htmlnextflow creo que con eso podemos crear un esquema del pipeline//*
