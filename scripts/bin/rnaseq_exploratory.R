@@ -1,4 +1,5 @@
 #!/usr/bin/env Rscript
+setwd(getwd())
 # =============================================================================
 # rnaseq_exploratory.R
 # Análisis exploratorio RNA-seq GSE52778
@@ -21,7 +22,7 @@ suppressPackageStartupMessages({
 
 # ── 1. Leer matriz de cuentas de featureCounts ────────────────────────────────
 args <- commandArgs(trailingOnly = TRUE)
-counts_file <- ifelse(length(args) > 0, args[1], "counts_matrix.txt")
+counts_file <- "featurecounts.txt"
 cat("Leyendo:", counts_file, "\n")
 
 raw_counts <- read.table(counts_file, header=TRUE, sep="\t", skip=1,

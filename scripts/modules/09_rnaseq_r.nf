@@ -1,14 +1,7 @@
-/*
- * modules/09_rnaseq_r.nf
- * Análisis exploratorio en R: normalización TMM, boxplot y PCA.
- */
-
 process RNASEQ_R {
 
     tag "exploratory_analysis"
-
-    container 'quay.io/biocontainers/bioconductor-edger:3.44.0--r43hf17093f_0'
-
+    container 'bioconductor/bioconductor_docker:RELEASE_3_18'
     publishDir "${params.outdir}/R_exploratory", mode: 'copy'
 
     input:
@@ -21,6 +14,13 @@ process RNASEQ_R {
 
     script:
     """
-    Rscript ${projectDir}/bin/rnaseq_exploratory.R ${counts_matrix}
+    mkdir -p \$HOME/R_libs
+    Rscript -e "
+        .libPaths('\$HOME/R_libs')
+        install.packages(c('ggplot2','tidyr','dplyr','tibble'), lib='\$HOME/R_libs', repos='https://cloud.r-project.org')
+        BiocManager::install('edgeR', lib='\$HOME/R_libs', ask=FALSE, update=FALSE)
+    "
+    cp ${projectDir}/bin/rnaseq_exploratory.R .
+    R_LIBS="\$HOME/R_libs" Rscript rnaseq_exploratory.R
     """
 }
