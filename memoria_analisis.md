@@ -46,7 +46,7 @@ Este pipeline puede  analizar datos de secuenciación de RNA de organismos con u
  - **Input**: la lista de muestras de un samplesheet.csv y los archivos FASTQ resultado de la secuenciación
  - **Output**: una matriz de expresión génica y un informe de control de calidad.
 
-<<<<<<< HEAD
+
 ## Resultados
 
 ## Interpretación
@@ -80,12 +80,25 @@ Este pipeline puede  analizar datos de secuenciación de RNA de organismos con u
 - **TRAILING 3**: elimina aquellas bases del final de la lectura hasta la primera por encima de calidad 3
 - **SLIDINGWINDOW:4:15**: Corta la lectura según una ventana de 4 bases cuando la calidad media de las lecturas en la ventana baja de 15.
 - **MINLEN:36**: Elimina aquellas lecturas por debajo de 36 basees de longitud.
+
 ### STAR_INDEX
+- **Función**: genera el genoma de referencia indexado
 
+*Parámetros*
+- **sjdbOverhang 62**: el valor óptimo es la longitud de las lecturas - 1.
+- **genomeSAsparseD**: 1, mayor valor decrece más al uso de RAM reduciendo la velocidad
+  
 ### STAR_ALIGN
+- **Función**: Alinea los FASTQ al genoma de referencia
 
+*Parámetros*
+- **outSAMtype BAM SortedByCoordinate**: devuele el output ordenado por coordenadas.
+  
 ### SAMtools
-
+- **Función**: SAMtools procesa los BAMs de STAR y:
+    - Ordena por coordenadas genómicas
+    - Crea el índice `.bai`
+    - Calcula métricas de alineamiento (`flagstat`) → van a MultiQC
 ### Pickard duplicates
 
 ### Featurecounts
