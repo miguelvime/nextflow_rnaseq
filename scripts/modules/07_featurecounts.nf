@@ -19,7 +19,7 @@ process FEATURECOUNTS {
 
     input:
     path bams // Tomamos el output bam_collected del main workflow
-    path genome_gtf from file(params.genome_gtf)
+    path gtf
     
     output:
     path "featurecounts.txt", emit: matrix   
@@ -28,10 +28,11 @@ process FEATURECOUNTS {
     script:
     """
     featureCounts \\
-        -a ${params.genome_gtf} \\
+        -a ${gtf} \\
         -p \\
-        -o ${sample_id}_featurecounts.txt \\
+        -o featurecounts.txt \\
         ${bams}
 
     """
+}
 }
