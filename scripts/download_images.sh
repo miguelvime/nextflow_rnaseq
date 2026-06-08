@@ -16,8 +16,8 @@ set -euo pipefail
 module load singularity/3.7.2
 
 # ── 2. Configurar caché ──────────────────────────────────────────────────────
-export SINGULARITY_CACHEDIR="${HOME}/.singularity_cache"
-mkdir -p "${HOME}/.singularity_cache/$SINGULARITY_CACHEDIR"
+export SINGULARITY_CACHEDIR="$HOME/UEM/nextflow_rnaseq/.singularity_cache"
+mkdir -p "$SINGULARITY_CACHEDIR"
 
 echo "=== Descargando imágenes Singularity ==="
 echo "Destino: $SINGULARITY_CACHEDIR"

@@ -45,9 +45,9 @@ fi
 # IMPORTANTE: Descargar primero las imágenes en el login node con:
 #   bash scripts/download_images.sh
 export NXF_OFFLINE=true
-export NXF_SINGULARITY_CACHEDIR="$HOME/.singularity_cache"
-export SINGULARITY_CACHEDIR="$HOME/.singularity_cache"
-mkdir -p "$HOME/.singularity_cache"
+export NXF_SINGULARITY_CACHEDIR="$HOME/UEM/nextflow_rnaseq/.singularity_cache"
+export SINGULARITY_CACHEDIR="$HOME/UEM/nextflow_rnaseq/.singularity_cache"
+mkdir -p "$NXF_SINGULARITY_CACHEDIR"
 
 # ── Verificar que las imágenes existen (opcional pero recomendado) ───────────
 # Si falta alguna imagen, el job fallará en el nodo de computación.
