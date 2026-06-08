@@ -17,7 +17,7 @@ module load singularity/3.7.2
 
 # ── 2. Configurar caché ──────────────────────────────────────────────────────
 export SINGULARITY_CACHEDIR="${HOME}/.singularity_cache"
-mkdir -p "$SINGULARITY_CACHEDIR"
+mkdir -p "${HOME}/.singularity_cache/$SINGULARITY_CACHEDIR"
 
 echo "=== Descargando imágenes Singularity ==="
 echo "Destino: $SINGULARITY_CACHEDIR"

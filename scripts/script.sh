@@ -44,6 +44,7 @@ fi
 # Guardar en $HOME para que persista entre ejecuciones (FSCRATCH se purga).
 # IMPORTANTE: Descargar primero las imágenes en el login node con:
 #   bash scripts/download_images.sh
+export NXF_OFFLINE=true
 export NXF_SINGULARITY_CACHEDIR="$HOME/.singularity_cache"
 export SINGULARITY_CACHEDIR="$HOME/.singularity_cache"
 mkdir -p "$HOME/.singularity_cache"
