@@ -25,9 +25,19 @@ set -euo pipefail
 
 # ── 1. Cargar módulos ──────────────────────────────────────────────────────
 # Verifica las versiones disponibles con: module avail
-module load Apptainer/1.2.5        # Singularity/Apptainer para contenedores
-module load Java/17                # Nextflow requiere Java >= 11
-# Si nextflow no está como módulo, asegúrate de que ~/bin/nextflow está en PATH
+module load singularity/3.7.2      # Singularity/Apptainer para contenedores
+module load nextflow/25.10.4       # Pipeline orchestrator
+# Java se incluye automáticamente con el módulo nextflow/25.10.4
+
+# ── Verificación de entorno ───────────────────────────────────────────────
+command -v nextflow >/dev/null 2>&1 || { echo "ERROR: nextflow no está disponible"; exit 1; }
+command -v singularity >/dev/null 2>&1 || { echo "ERROR: singularity no está disponible"; exit 1; }
+
+# ── Verificar que $FSCRATCH está definido ───────────────────────────────────
+if [ -z "$FSCRATCH" ]; then
+    echo "WARNING: \$FSCRATCH no está definido. Usando \$HOME para NXF_WORK."
+    export FSCRATCH="$HOME"
+fi
 
 # ── 2. Caché de imágenes Singularity (.sif) ────────────────────────────────
 # Las imágenes Docker se convierten a .sif en el primer uso.
