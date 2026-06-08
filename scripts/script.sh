@@ -42,9 +42,15 @@ fi
 # ── 2. Caché de imágenes Singularity (.sif) ────────────────────────────────
 # Las imágenes Docker se convierten a .sif en el primer uso.
 # Guardar en $HOME para que persista entre ejecuciones (FSCRATCH se purga).
+# IMPORTANTE: Descargar primero las imágenes en el login node con:
+#   bash scripts/download_images.sh
 export NXF_SINGULARITY_CACHEDIR="$HOME/.singularity_cache"
 export SINGULARITY_CACHEDIR="$HOME/.singularity_cache"
 mkdir -p "$HOME/.singularity_cache"
+
+# ── Verificar que las imágenes existen (opcional pero recomendado) ───────────
+# Si falta alguna imagen, el job fallará en el nodo de computación.
+# El script download_images.sh debe ejecutarse una sola vez en el login node.
 
 # ── 3. Directorio de trabajo de Nextflow (en FSCRATCH, I/O rápido) ─────────
 export NXF_WORK="$FSCRATCH/nextflow_rnaseq_work"

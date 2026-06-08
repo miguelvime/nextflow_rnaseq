@@ -79,5 +79,5 @@ workflow {
     MULTIQC(ch_multiqc_inputs)
 
     // 11. Análisis exploratorio en R
-    RNASEQ_R(FEATURECOUNTS.out.counts)
+    RNASEQ_R(FEATURECOUNTS.out.matrix)
 }
