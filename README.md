@@ -94,6 +94,16 @@ Se utiliza el genoma de referencia completo (GRCh38 primary assembly, ~3.1 GB).
 El índice STAR se genera una sola vez y se reutiliza para las 8 muestras en paralelo.
 En Picasso se asignan 12 CPUs y 64 GB RAM para la indexación y 45 GB RAM para el alineamiento.
 
+## 8. SAMtools — Ordenación e indexado
+
+SAMtools procesa los BAMs de STAR:
+- Ordena por coordenadas genómicas
+- Crea el índice `.bai`
+- Calcula métricas de alineamiento (`flagstat`) → van a MultiQC
+
+- Módulo: `scripts/modules/05_samtools.nf`
+- Imagen Docker: `quay.io/biocontainers/samtools:1.19.2--h50ea8bc_1`
+
 ## 6. Ejecución en Picasso (HPC)
 
 El clúster Picasso (SCBI-UMA) usa **Singularity/Apptainer** en lugar de Docker y **Slurm** como gestor de colas.
@@ -159,3 +169,5 @@ results/
 - Tiempo de ejecución aproximado en local: 1.5 horas para las 8 muestras
 - En Picasso: el tiempo total depende de la cola; STAR_INDEX tarda ~30-60 min
 
+- Memoria recomendada: mínimo 8 GB RAM
+- Tiempo de ejecución aproximado: 1.5 horas para las 8 muestras
