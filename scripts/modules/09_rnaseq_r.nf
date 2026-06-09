@@ -14,6 +14,8 @@ process RNASEQ_R {
 
     script:
     """
+    export R_LIBS_USER="/mnt/home/users/scbi_quantum_uma/jluque/R/libs-4.3.3"
+    
     cp /mnt/home/users/scbi_quantum_uma/jluque/UEM/nextflow_rnaseq/scripts/bin/rnaseq_exploratory.R .
     Rscript rnaseq_exploratory.R
     """
