@@ -1,9 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.8)  9 JUN 2026 19:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.8)  9 JUN 2026 19:49
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**memoria_analisis.tex
-(./memoria_analisis.tex
+**c:/Users/javia/Documents/Nextflow/nextflow_rnaseq/informe/memoria_analisis.tex
+(c:/Users/javia/Documents/Nextflow/nextflow_rnaseq/informe/memoria_analisis.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
 (c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cls
@@ -399,21 +400,21 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
 <imagenes/boxplot_normalized.png, id=214, 542.025pt x 361.35pt>
 File: imagenes/boxplot_normalized.png Graphic file (type png)
 <use imagenes/boxplot_normalized.png>
-Package pdftex.def Info: imagenes/boxplot_normalized.png  used on input line 320.
+Package pdftex.def Info: imagenes/boxplot_normalized.png  used on input line 321.
 (pdftex.def)             Requested size: 204.85846pt x 136.57007pt.
 <imagenes/boxplot_raw.png, id=215, 542.025pt x 361.35pt>
 File: imagenes/boxplot_raw.png Graphic file (type png)
 <use imagenes/boxplot_raw.png>
-Package pdftex.def Info: imagenes/boxplot_raw.png  used on input line 325.
+Package pdftex.def Info: imagenes/boxplot_raw.png  used on input line 326.
 (pdftex.def)             Requested size: 204.85846pt x 136.57007pt.
  [8]
 <imagenes/pca_plot.png, id=220, 481.8pt x 421.575pt>
 File: imagenes/pca_plot.png Graphic file (type png)
 <use imagenes/pca_plot.png>
-Package pdftex.def Info: imagenes/pca_plot.png  used on input line 332.
+Package pdftex.def Info: imagenes/pca_plot.png  used on input line 333.
 (pdftex.def)             Requested size: 182.09486pt x 159.33174pt.
  [9 <./imagenes/boxplot_normalized.png (PNG copy)> <./imagenes/boxplot_raw.png (PNG copy)> <./imagenes/pca_plot.png (PNG copy)>]
-Overfull \hbox (0.95253pt too wide) in paragraph at lines 385--386
+Overfull \hbox (0.95253pt too wide) in paragraph at lines 386--387
 \T1/cmr/m/n/10.95 en el no-do asig-na-do, ca-da pro-ce-so in-di-vid-u-al del pipeline (FastQC, Trim-mo-mat-ic, STAR_ALIGN,
  []
 
@@ -429,15 +430,15 @@ Package rerunfilecheck Info: File `memoria_analisis.out' has not changed.
 (rerunfilecheck)             Checksum: 31DC519BAEEC43FC4EA0A3758A7069F4;6608.
  ) 
 Here is how much of TeX's memory you used:
- 13689 strings out of 469339
- 220914 string characters out of 5464868
+ 13690 strings out of 469339
+ 221086 string characters out of 5464868
  659122 words of memory out of 5000000
  42331 multiletter control sequences out of 15000+600000
  640436 words of font info for 65 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,9n,79p,848b,787s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,9n,79p,906b,787s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk><c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on memoria_analisis.pdf (12 pages, 325430 bytes).
+Output written on memoria_analisis.pdf (12 pages, 325476 bytes).
 PDF statistics:
  795 PDF objects out of 1000 (max. 8388607)
  278 compressed objects within 3 object streams

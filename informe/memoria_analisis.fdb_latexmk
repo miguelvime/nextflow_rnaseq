@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1781026705.98159 "c:/Users/javia/Documents/Nextflow/nextflow_rnaseq/informe/memoria_analisis.tex" "memoria_analisis.pdf" "memoria_analisis" 1781026706.89414 0
+["pdflatex"] 1781027343.39949 "c:/Users/javia/Documents/Nextflow/nextflow_rnaseq/informe/memoria_analisis.tex" "memoria_analisis.pdf" "memoria_analisis" 1781027344.30672 0
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1778127908 3584 2d666ecf6d466d8b007246bc2f94d9da ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1778127908 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1778127908 3584 402da0b29eafbad07963b1224b222f18 ""
@@ -97,14 +97,14 @@
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk" 1781024167 12644 2f44e1c3f87090e028766e57a4c119fb ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1778248905 2241934 45961fd7d0fbe470d3e33b8bb09fd5ce ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf.cnf" 1778242777 956 69313aa9f050df65f9acc311b4262934 ""
-  "c:/Users/javia/Documents/Nextflow/nextflow_rnaseq/informe/memoria_analisis.tex" 1781026705 23734 054cb2622a049c146c6c3e3769ebcec5 ""
+  "c:/Users/javia/Documents/Nextflow/nextflow_rnaseq/informe/memoria_analisis.tex" 1781027342 26346 06ede42a0834a143e1e4a243dae40e7b ""
   "imagenes/boxplot_normalized.png" 1781021668 40984 816e5e1840c3f97262d68e84ed709391 ""
   "imagenes/boxplot_raw.png" 1781021669 39634 beb432afaa65938da3ed92cb221f2041 ""
   "imagenes/pca_plot.png" 1781021669 50802 b14cfe96e85249ec2bc9d4d2d2f90385 ""
-  "memoria_analisis.aux" 1781026706 5621 16abaa18c3e4551711db8643a5d8bd63 "pdflatex"
-  "memoria_analisis.out" 1781026706 6284 35d94de2b52eec65bf83e37a45c2d813 "pdflatex"
-  "memoria_analisis.tex" 1781026705 23734 054cb2622a049c146c6c3e3769ebcec5 ""
-  "memoria_analisis.toc" 1781026706 2822 13e1eddfc911610e4ce9654ce9611435 "pdflatex"
+  "memoria_analisis.aux" 1781027344 5797 71d521739f9528873509f0d97559d7e7 "pdflatex"
+  "memoria_analisis.out" 1781027344 6608 31dc519baeec43fc4ea0a3758a7069f4 "pdflatex"
+  "memoria_analisis.tex" 1781027342 26346 06ede42a0834a143e1e4a243dae40e7b ""
+  "memoria_analisis.toc" 1781027344 2956 13c771d038bf6b0f1e0f6ae2472350bf "pdflatex"
   (generated)
   "memoria_analisis.aux"
   "memoria_analisis.log"
