@@ -1,0 +1,37 @@
+/*
+ * ******************Featurecounts module  ***********************
+ *INPUT ->SAM/BAM
+ *       ->GTF:an annotation file including chromosomal coordinates of features
+ *
+ *OUTPUT -> A file with numbers of reads assigned to features
+ *       -> stat info for the overall results
+ *              ->number of succesfully asigned reads
+ *              ->number of reads that failed to be assigned
+ */
+ 
+
+process FEATURECOUNTS {
+    tag "matriz_global"
+
+    container 'quay.io/biocontainers/subread:2.1.1--h577a1d6_0'
+
+    publishDir "${params.outdir}/featurecounts", mode: 'copy'
+
+    input:
+    path bams // Tomamos el output bam_collected del main workflow
+    path gtf
+    
+    output:
+    path "featurecounts.txt", emit: matrix   
+    path "featurecounts.txt.summary", emit: summary
+
+    script:
+    """
+    featureCounts \\
+        -a ${gtf} \\
+        -p \\
+        -o featurecounts.txt \\
+        ${bams}
+
+    """
+}

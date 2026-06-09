@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 /*
  * main.nf — Pipeline RNA-seq GSE52778
- * FastQC + Trimmomatic + STAR + SAMtools
+ * FastQC + Trimmomatic + STAR + SAMtools + Picard + featureCounts + MultiQC + R
  */
 
 nextflow.enable.dsl = 2
@@ -13,6 +13,10 @@ include { TRIMMOMATIC           } from './modules/02_trimmomatic'
 include { STAR_INDEX            } from './modules/03_star_index'
 include { STAR_ALIGN            } from './modules/04_star_align'
 include { SAMTOOLS              } from './modules/05_samtools'
+include { PICARD_MARKDUP        } from './modules/06_picard_markdup'
+include { FEATURECOUNTS         } from './modules/07_featurecounts'
+include { MULTIQC               } from './modules/08_multiQC'
+include { RNASEQ_R              } from './modules/09_rnaseq_r'
 
 // Leer samplesheet
 def parse_samplesheet(csv_path) {
@@ -55,4 +59,25 @@ workflow {
 
     // 7. SAMtools: sort, index, flagstat
     SAMTOOLS(STAR_ALIGN.out.bam)
+
+    // 8. Picard: MarkDuplicates
+    PICARD_MARKDUP(SAMTOOLS.out.sorted_bam)
+
+    // 9. FeatureCounts
+    bams_collected = PICARD_MARKDUP.out.markdup_bam.map{it[1]}.collect()
+    FEATURECOUNTS(bams_collected, params.genome_gtf)
+
+    // 10. MultiQC
+    ch_multiqc_inputs = Channel.empty()
+        .mix( FASTQC_RAW.out.zip.map { it[1] } )
+        .mix( FASTQC_TRIM.out.zip.map { it[1] } )
+        .mix( TRIMMOMATIC.out.log.map { it[1] } )
+        .mix( STAR_ALIGN.out.log.map { it[1] } )
+        .mix( SAMTOOLS.out.flagstat.map { it[1] } )
+        .mix( FEATURECOUNTS.out.summary )
+        .collect()
+    MULTIQC(ch_multiqc_inputs)
+
+    // 11. Análisis exploratorio en R
+    RNASEQ_R(FEATURECOUNTS.out.matrix)
 }

@@ -7,7 +7,8 @@ INPUT_FILE="$DATA_DIR/SRR_Acc_List.txt"
 
 mkdir -p "$DATA_DIR"
 
-while read -r SRR; do
+while IFS= read -r line || [ -n "$line" ]; do
+    SRR=$(echo "$line" | tr -d '\r' | xargs)
     if [ -n "$SRR" ]; then
         echo "Procesando $SRR..."
         prefetch --output-directory "$DATA_DIR" "$SRR"

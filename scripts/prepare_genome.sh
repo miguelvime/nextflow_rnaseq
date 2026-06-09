@@ -13,7 +13,3 @@ wget -P data/genome "https://ftp.ensembl.org/pub/release-111/gtf/homo_sapiens/Ho
 # 4. Descomprimir ambos archivos (STAR y otras herramientas prefieren el texto plano para indexar)
 gunzip data/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz > data/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa
 gunzip data/genome/Homo_sapiens.GRCh38.111.gtf.gz > data/genome/Homo_sapiens.GRCh38.111.gtf
-
-# 5 . Cogemos solo cromosoma 19-22 para test, esto lo debemos borrar cuando probemos en Picasso
-awk -F'\t' '$1 ~ /^(chr)?(19|20|21|22)$/ || $0 ~ /^#/' data/genome/Homo_sapiens.GRCh38.111.gtf > data/genome/GRCh38_subset.gtf
-awk '/^>/{if($1 ~ /^>(chr)?(19|20|21|22)$/) flag=1; else flag=0} flag' data/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa > data/genome/GRCh38_subset.fa
