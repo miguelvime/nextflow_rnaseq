@@ -14,13 +14,7 @@ process RNASEQ_R {
 
     script:
     """
-    mkdir -p \$HOME/R_libs
-    Rscript -e "
-        .libPaths('\$HOME/R_libs')
-        install.packages(c('ggplot2','tidyr','dplyr','tibble'), lib='\$HOME/R_libs', repos='https://cloud.r-project.org')
-        BiocManager::install('edgeR', lib='\$HOME/R_libs', ask=FALSE, update=FALSE)
-    "
-    cp ${projectDir}/bin/rnaseq_exploratory.R .
-    R_LIBS="\$HOME/R_libs" Rscript rnaseq_exploratory.R
+    cp /mnt/home/users/scbi_quantum_uma/jluque/UEM/nextflow_rnaseq/scripts/bin/rnaseq_exploratory.R .
+    Rscript rnaseq_exploratory.R
     """
 }
