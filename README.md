@@ -1,106 +1,156 @@
 # nextflow_rnaseq
 
-## 1. Requirements
-- Descarga de datos de GEO
-- Descarga del genoma de referencia
+Pipeline RNA-seq reproducibile en Nextflow DSL2 para el dataset GSE52778 (8 muestras paired-end).
+Procesa desde el control de calidad inicial hasta el marcado de duplicados, con la intención de
+integrar posteriormente featureCounts, MultiQC y el análisis exploratorio en R.
 
-Para descargar directamente los .fastq y que aparezcan en la carpeta data/
-1. Instala sra-toolkit y pigz 
+---
 
-```bash
-sudo apt install sra-toolkit
-sudo apt install pigz
-``` 
-2. Desde nextflow_rnaseq/
+## 1. Requisitos previos
 
-Recuerda dar permiso a los scripts con 
+### Datos FASTQ
 
 ```bash
+sudo apt install sra-toolkit pigz
 chmod +x scripts/download_data.sh
-chmod +x scripts/prepare_genome.sh
+./scripts/download_data.sh
 ```
-Ejecuta los scripts con:
+
+### Genoma de referencia
 
 ```bash
-./scripts/download_data.sh 
+chmod +x scripts/prepare_genome.sh
 ./scripts/prepare_genome.sh
 ```
 
-Esto descarga los fastq y los comprime y descarga el genoma de referencia. El resultado debería ser:
+Estructura esperada tras la descarga:
 
 ```text
-Data/
-└── SRR*/  
-    ├── SRR*_1.fastq.gz
-    ├── SRR*_2.fastq.gz
-    └── SRR*.sra
-|__ genome/
-    └── genome.fa
-
+data/
+├── SRR*/
+│   ├── SRR*_1.fastq.gz
+│   └── SRR*_2.fastq.gz
+└── genome/
+    ├── Homo_sapiens.GRCh38.dna.primary_assembly.fa
+    └── Homo_sapiens.GRCh38.111.gtf
 ```
 
-Habría 8 carpetas SRR*/, una por cada muestra y una carpeta genome con el genoma de referencia
+---
 
+## 2. Ejecución
 
-
-## 2. Configuración del pipeline
-
-El pipeline está construido en Nextflow DSL2 con Docker. 
-Se ejecuta con un único comando:
+### Local (Docker)
 
 ```bash
+# Ejecución completa
 nextflow run scripts/main.nf -profile docker
-```
 
-## 3. Control de calidad — FastQC
-
-FastQC analiza la calidad de las lecturas FASTQ de cada muestra en paralelo.
-Los resultados (ficheros `.zip` y `.html`) se integran en el informe MultiQC final.
-
-- Módulo: `scripts/modules/fastqc.nf`
-- Imagen Docker: `biocontainers/fastqc:0.12.1--hdfd78af_0`
-
-## 4. Eliminación de adaptadores — Trimmomatic
-
-Trimmomatic elimina adaptadores Illumina y bases de baja calidad de las lecturas paired-end.
-Los logs se integran en el informe MultiQC final.
-
-- Módulo: `scripts/modules/trimmomatic.nf`
-- Imagen Docker: `biocontainers/trimmomatic:0.39--hdfd78af_2`
-
-## 5. Ejecución del pipeline
-
-Con Docker y Nextflow instalados, desde la carpeta `nextflow_rnaseq/`:
-
-```bash
-nextflow run scripts/main.nf -profile docker
-```
-
-Para reanudar una ejecución interrumpida:
-
-```bash
+# Reanudar una ejecución interrumpida
 nextflow run scripts/main.nf -profile docker -resume
 ```
 
-## 6. Resultados
+### HPC Picasso (Singularity + Slurm)
 
-Los resultados se guardan en `results/`:
+```bash
+sbatch scripts/script.sh
+```
 
+Ver `README.md` en la rama `picasso` para la configuración completa del clúster.
+
+---
+
+## 3. Pasos del pipeline
+
+| # | Proceso | Módulo | Descripción |
+|---|---------|--------|-------------|
+| 1 | FASTQC (raw) | `01_fastqc.nf` | Control de calidad de lecturas crudas |
+| 2 | Trimmomatic | `02_trimmomatic.nf` | Eliminación de adaptadores y bases de baja calidad |
+| 3 | FastQC (trim) | `01_fastqc.nf` | Control de calidad post-trimming |
+| 4 | STAR_INDEX | `03_star_index.nf` | Generación del índice STAR (una sola vez) |
+| 5 | STAR_ALIGN | `04_star_align.nf` | Alineamiento al genoma humano (por muestra) |
+| 6 | SAMtools | `05_samtools.nf` | Ordenación, indexado, flagstat e idxstats |
+| 7 | Picard MarkDuplicates | `06_picard_markdup.nf` | Marcado de duplicados sin eliminarlos |
+| 8 | featureCounts | — | *pendiente* — cuantificación por gen |
+| 9 | MultiQC | — | *pendiente* — informe de QC agregado |
+| 10 | R exploratorio | — | *pendiente* — boxplot + PCA |
+
+### 3.1. FASTQC
+
+Analiza la calidad de las lecturas FASTQ de cada muestra en paralelo.
+Los `.zip` y `.html` se integran en el informe MultiQC final.
+
+- Módulo: `scripts/modules/01_fastqc.nf`
+- Imagen: `quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0`
+
+### 3.2. Trimmomatic
+
+Elimina adaptadores Illumina y bases de baja calidad (paired-end).
+Los logs del trimming se integran en el informe MultiQC final.
+
+- Módulo: `scripts/modules/02_trimmomatic.nf`
+- Imagen: `quay.io/biocontainers/trimmomatic:0.39--hdfd78af_2`
+
+### 3.3. STAR (índice + alineamiento)
+
+Dos procesos separados:
+- **STAR_INDEX**: genera el índice una sola vez a partir del FASTA + GTF.
+- **STAR_ALIGN**: alinea cada muestra en paralelo usando el índice generado.
+
+- Módulos: `scripts/modules/03_star_index.nf`, `scripts/modules/04_star_align.nf`
+- Imagen: `quay.io/biocontainers/star:2.7.11b--h5ca1c30_8`
+
+### 3.4. SAMtools
+
+Ordena el BAM por coordenadas, genera el índice `.bai`, y calcula métricas de alineamiento:
+
+- **sort**: ordenación por coordenadas genómicas
+- **index**: creación del `.bai`
+- **flagstat**: resumen de reads mapeados, paired, etc.
+- **idxstats**: estadísticas por cromosoma
+
+Las salidas `.flagstat.txt` e `.idxstats.txt` van a MultiQC.
+El BAM ordenado + índice pasan a Picard MarkDuplicates.
+
+- Módulo: `scripts/modules/05_samtools.nf`
+- Imagen: `quay.io/biocontainers/samtools:1.19.2--h50ea8bc_1`
+
+### 3.5. Picard MarkDuplicates
+
+Marca duplicados ópticos y de PCR **sin eliminarlos** (`REMOVE_DUPLICATES=false`).
+El BAM resultante mantiene todas las reads originales con la etiqueta `duplicate` en el FLAG.
+
+- **Entrada**: BAM ordenado por coordenadas + índice (de SAMtools)
+- **Salida**: BAM con duplicados marcados + índice → pasa a featureCounts
+- **Métricas**: tabla `.markdup_metrics.txt` → pasa a MultiQC
+
+- Módulo: `scripts/modules/06_picard_markdup.nf`
+- Imagen: `quay.io/biocontainers/picard:3.1.1--hdfd78af_0`
+- Memoria JVM: 80% de la RAM asignada al proceso (`-Xmx`)
+- Parámetros clave: `--ASSUME_SORT_ORDER coordinate`, `--VALIDATION_STRINGENCY LENIENT`
+
+---
+
+## 4. Resultados
+
+Los outputs se guardan en `results/`:
+
+```text
 results/
-├── fastqc/       → informes de calidad de lecturas crudas y trimadas
-└── trimmomatic/  → lecturas limpias y logs de trimming
+├── fastqc/            → informes de calidad (raw + trim)
+├── trimmomatic/       → lecturas limpias y logs de trimming
+├── star_alignment/    → BAM alineados, logs STAR, SJ tables
+├── samtools/          → BAM ordenados, índices, flagstat, idxstats
+└── picard_markdup/    → BAM con duplicados marcados, métricas
+```
 
+---
 
-## Notas importantes
+## 5. Notas importantes
 
-- Las imágenes Docker usan `quay.io` (no `docker.io`)
-- Memoria recomendada: mínimo 8 GB RAM
-- Tiempo de ejecución aproximado: 1.5 horas para las 8 muestras
-
-## 7. Alineamiento con STAR
-    La RAM no da para hacer el paso completo, mientras estamos en fase de testeo he cortado el genoma de referencia. Cuando lo pasemos por Picasso hay que:
-     - Quitar las lineas de prepare_genome.sh que recortan los cromosomas
-     - Cambiar la ruta de nextflow config para que apunte a los genomas de referencia completos
+- Todas las imágenes Docker usan `quay.io/biocontainers/...` con tag exacto (incluyendo hash de build de Bioconda). Ninguna usa `:latest`.
+- Memoria recomendada local: mínimo 8 GB RAM.
+- En Picasso: STAR_INDEX requiere 64 GB RAM, STAR_ALIGN 45 GB RAM.
+- El `nextflow.config` de esta rama está configurado para **testeo local** con un genoma subset. Para ejecución completa, usar las rutas del genoma completo en la rama `main` o `picasso`.
 ## 8. SAMtools — Ordenación e indexado
 
 SAMtools procesa los BAMs de STAR:

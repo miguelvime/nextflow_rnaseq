@@ -22,10 +22,14 @@ process SAMTOOLS {
     tuple val(sample_id),
           path("${sample_id}.flagstat.txt"),   emit: flagstat
 
+    tuple val(sample_id),
+          path("${sample_id}.idxstats.txt"),   emit: idxstats
+
     script:
     """
     samtools sort -@ ${task.cpus} -o ${sample_id}_sorted.bam ${bam}
     samtools index ${sample_id}_sorted.bam
     samtools flagstat ${sample_id}_sorted.bam > ${sample_id}.flagstat.txt
+    samtools idxstats ${sample_id}_sorted.bam > ${sample_id}.idxstats.txt
     """
 }

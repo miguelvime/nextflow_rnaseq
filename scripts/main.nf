@@ -13,6 +13,7 @@ include { TRIMMOMATIC           } from './modules/02_trimmomatic'
 include { STAR_INDEX            } from './modules/03_star_index'
 include { STAR_ALIGN            } from './modules/04_star_align'
 include { SAMTOOLS              } from './modules/05_samtools'
+include { PICARD_MARKDUP        } from './modules/06_picard_markdup'
 
 // Leer samplesheet
 def parse_samplesheet(csv_path) {
@@ -48,11 +49,11 @@ workflow {
     )
 
     // 6. STAR Alignment
-    STAR_ALIGN(
-        TRIMMOMATIC.out.trimmed_reads,
-        STAR_INDEX.out.star_index
-    )
+    STAR_ALIGN(TRIMMOMATIC.out.trimmed_reads, STAR_INDEX.out.star_index)
 
-    // 7. SAMtools: sort, index, flagstat
+    // 7. SAMtools: sort + index + flagstat + idxstats
     SAMTOOLS(STAR_ALIGN.out.bam)
+
+    // 8. Picard MarkDuplicates: marca duplicados sin eliminarlos
+    PICARD_MARKDUP(SAMTOOLS.out.sorted_bam)
 }
