@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1781087216.48376 "c:/Users/javia/Documents/Nextflow/nextflow_rnaseq/informe/memoria_analisis.tex" "memoria_analisis.pdf" "memoria_analisis" 1781087217.43242 0
+["pdflatex"] 1781088581.83507 "c:/Users/javia/Documents/Nextflow/nextflow_rnaseq/informe/memoria_analisis.tex" "memoria_analisis.pdf" "memoria_analisis" 1781088582.80919 0
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1778127908 3584 2d666ecf6d466d8b007246bc2f94d9da ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1778127908 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1778127908 3584 402da0b29eafbad07963b1224b222f18 ""
@@ -94,19 +94,21 @@
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk" 1781024168 26208 023b2def3d4261cbee8452dd489953ea ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk" 1781024169 28416 87d8ac000d592ecdff8c1b65eb78339d ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk" 1781024169 34296 924e408c28180a0a721068c2930dca0f ""
+  "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk" 1781087878 42496 962ca8f1ba775ddc2a0a2d44aa075a44 ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk" 1781024167 35180 c8556efdddca475e573b68415df73578 ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk" 1778784785 21952 ca720d7b4a44297f4e5bebaa5c61db2c ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk" 1781024167 12644 2f44e1c3f87090e028766e57a4c119fb ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1778248905 2241934 45961fd7d0fbe470d3e33b8bb09fd5ce ""
   "c:/Users/javia/AppData/Roaming/TinyTeX/texmf.cnf" 1778242777 956 69313aa9f050df65f9acc311b4262934 ""
-  "c:/Users/javia/Documents/Nextflow/nextflow_rnaseq/informe/memoria_analisis.tex" 1781087216 28466 ccd7618a419bb67036b0b7d9871c6fc3 ""
+  "c:/Users/javia/Documents/Nextflow/nextflow_rnaseq/informe/memoria_analisis.tex" 1781088581 28593 164340ea9647b7b264c1c1fcf302ced7 ""
+  "imagenes/UEM.png" 1780422767 102935 f69661452ad4f565f55a8c6ee981d0b9 ""
   "imagenes/boxplot_normalized.png" 1781021668 40984 816e5e1840c3f97262d68e84ed709391 ""
   "imagenes/boxplot_raw.png" 1781021669 39634 beb432afaa65938da3ed92cb221f2041 ""
   "imagenes/pca_plot.png" 1781021669 50802 b14cfe96e85249ec2bc9d4d2d2f90385 ""
-  "memoria_analisis.aux" 1781087217 6302 6c86e0494ce4d877f4e5b7a78ad71abf "pdflatex"
-  "memoria_analisis.out" 1781087217 6608 31dc519baeec43fc4ea0a3758a7069f4 "pdflatex"
-  "memoria_analisis.tex" 1781087216 28466 ccd7618a419bb67036b0b7d9871c6fc3 ""
-  "memoria_analisis.toc" 1781087217 2958 67d8852c9584e2d5f8ac2d845eebed05 "pdflatex"
+  "memoria_analisis.aux" 1781088582 6302 6c86e0494ce4d877f4e5b7a78ad71abf "pdflatex"
+  "memoria_analisis.out" 1781088582 6608 31dc519baeec43fc4ea0a3758a7069f4 "pdflatex"
+  "memoria_analisis.tex" 1781088581 28593 164340ea9647b7b264c1c1fcf302ced7 ""
+  "memoria_analisis.toc" 1781088582 2958 67d8852c9584e2d5f8ac2d845eebed05 "pdflatex"
   (generated)
   "memoria_analisis.aux"
   "memoria_analisis.log"

@@ -14,21 +14,25 @@
 
 \geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
 
-\title{\textbf{Memoria del Análisis Nextflow}\\ \Large Pipeline de RNA-seq en Nextflow (Dataset GSE52778)}
-\author{Máster en Bioinformática}
+\title{\includegraphics[width=0.6\textwidth]{imagenes/UEM.png}\\[1cm] \textbf{Memoria del Análisis Nextflow}\\ \Large Pipeline de RNA-seq en Nextflow (Dataset GSE52778)}
+\author{\LARGE Máster en Bioinformática\\[0.5cm]
+ Miguel Ángel Vicente Mesonero\\
+ Gloria Muñoz Martín\\
+ Javier Luque Serrano}
 \date{\today}
-
-\author{Miguel Ángel Vicente Mesonero \\ Gloria Muñoz Martín \\ Javier Luque Serrano}
-
 \begin{document}
 
 \maketitle
+\thispagestyle{empty}
 
 \begin{abstract}
 \noindent Este documento describe el desarrollo, la ejecución y los resultados de un pipeline bioinformático completo para el análisis de datos de RNA-seq del dataset GSE52778. El pipeline fue construido en Nextflow DSL2, integrando contenedores Docker y ejecutado en el HPC Picasso mediante Singularity. A lo largo del proceso, cada herramienta fue encapsulada como módulo independiente, desarrollada y testeada en ramas separadas de GitHub antes de su integración en el flujo principal. Finalmente, se detallan los problemas técnicos encontrados, especialmente en la integración del análisis exploratorio en R, y las soluciones adoptadas.
 \end{abstract}
 
+\newpage
+
 \tableofcontents
+\thispagestyle{empty}
 \newpage
 
 % =============================================================================

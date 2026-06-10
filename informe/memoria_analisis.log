@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.8)  10 JUN 2026 12:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.8)  10 JUN 2026 12:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -380,54 +380,59 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 \c@lstlisting=\count317
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
+<imagenes/UEM.png, id=128, 652.4375pt x 218.8175pt>
+File: imagenes/UEM.png Graphic file (type png)
+<use imagenes/UEM.png>
+Package pdftex.def Info: imagenes/UEM.png  used on input line 26.
+(pdftex.def)             Requested size: 273.14923pt x 91.61223pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 26.
-(./memoria_analisis.toc
+[1
+
+{c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./imagenes/UEM.png (PNG copy)>] (./memoria_analisis.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 4.
- [1
-
-{c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+)
 \tf@toc=\write4
 \openout4 = `memoria_analisis.toc'.
 
  [2] [3]
-Overfull \hbox (11.56148pt too wide) in paragraph at lines 92--93
+Overfull \hbox (11.56148pt too wide) in paragraph at lines 96--97
 []\T1/cmr/m/n/10.95 El pipeline com-ple-to fue eje-cu-ta-do en el clúster de al-to rendimien-to (HPC) Pi-cas-so, perteneciente
  []
 
 [4]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 155.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 159.
  [5] [6] [7] [8]
-<imagenes/boxplot_raw.png, id=218, 542.025pt x 361.35pt>
+<imagenes/boxplot_raw.png, id=220, 542.025pt x 361.35pt>
 File: imagenes/boxplot_raw.png Graphic file (type png)
 <use imagenes/boxplot_raw.png>
-Package pdftex.def Info: imagenes/boxplot_raw.png  used on input line 323.
+Package pdftex.def Info: imagenes/boxplot_raw.png  used on input line 327.
 (pdftex.def)             Requested size: 204.85846pt x 136.57007pt.
-<imagenes/boxplot_normalized.png, id=219, 542.025pt x 361.35pt>
+<imagenes/boxplot_normalized.png, id=221, 542.025pt x 361.35pt>
 File: imagenes/boxplot_normalized.png Graphic file (type png)
 <use imagenes/boxplot_normalized.png>
-Package pdftex.def Info: imagenes/boxplot_normalized.png  used on input line 329.
+Package pdftex.def Info: imagenes/boxplot_normalized.png  used on input line 333.
 (pdftex.def)             Requested size: 204.85846pt x 136.57007pt.
 
-Overfull \hbox (4.41676pt too wide) in paragraph at lines 320--332
+Overfull \hbox (4.41676pt too wide) in paragraph at lines 324--336
 []  $[]$   $[]$ 
  []
 
-<imagenes/pca_plot.png, id=220, 481.8pt x 421.575pt>
+<imagenes/pca_plot.png, id=222, 481.8pt x 421.575pt>
 File: imagenes/pca_plot.png Graphic file (type png)
 <use imagenes/pca_plot.png>
-Package pdftex.def Info: imagenes/pca_plot.png  used on input line 340.
+Package pdftex.def Info: imagenes/pca_plot.png  used on input line 344.
 (pdftex.def)             Requested size: 227.62206pt x 199.1695pt.
 [9 <./imagenes/boxplot_raw.png (PNG copy)> <./imagenes/boxplot_normalized.png (PNG copy)>] [10 <./imagenes/pca_plot.png (PNG copy)>]
-Overfull \hbox (0.95253pt too wide) in paragraph at lines 393--394
+Overfull \hbox (0.95253pt too wide) in paragraph at lines 397--398
 \T1/cmr/m/n/10.95 en el no-do asig-na-do, ca-da pro-ce-so in-di-vid-u-al del pipeline (FastQC, Trim-mo-mat-ic, STAR_ALIGN,
  []
 
@@ -443,18 +448,18 @@ Package rerunfilecheck Info: File `memoria_analisis.out' has not changed.
 (rerunfilecheck)             Checksum: 31DC519BAEEC43FC4EA0A3758A7069F4;6608.
  ) 
 Here is how much of TeX's memory you used:
- 13752 strings out of 469339
- 222131 string characters out of 5464868
- 660544 words of memory out of 5000000
- 42388 multiletter control sequences out of 15000+600000
+ 13759 strings out of 469339
+ 222291 string characters out of 5464868
+ 654616 words of memory out of 5000000
+ 42395 multiletter control sequences out of 15000+600000
  640436 words of font info for 65 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,8n,79p,906b,790s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk><c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on memoria_analisis.pdf (12 pages, 328575 bytes).
+ 75i,8n,79p,906b,643s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> <c:/Users/javia/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk><c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/javia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on memoria_analisis.pdf (12 pages, 434115 bytes).
 PDF statistics:
- 801 PDF objects out of 1000 (max. 8388607)
- 279 compressed objects within 3 object streams
+ 820 PDF objects out of 1000 (max. 8388607)
+ 283 compressed objects within 3 object streams
  57 named destinations out of 1000 (max. 500000)
- 264 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 269 words of extra memory for PDF output out of 10000 (max. 10000000)
 
