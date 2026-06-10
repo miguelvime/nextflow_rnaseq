@@ -22,7 +22,6 @@ process STAR_INDEX {
     script:
     
     """
-    mkdir -p star_index
     STAR \\
         --runThreadN ${task.cpus} \\
         --runMode genomeGenerate \\
