@@ -2,7 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
-\usepackage{hyperref}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black]{hyperref}
+\usepackage{float}
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{listings}
@@ -313,25 +314,31 @@ Por su parte, la tabla de métricas de Picard MarkDuplicates refleja un nivel de
 \subsection{Interpretación del Análisis Exploratorio (R)}
 
 \begin{itemize}
-    \item \textbf{Boxplots de distribución de expresión:} La comparación visual de las distribuciones de expresión antes y después de la normalización (método TMM de \textit{edgeR}) demuestra que los sesgos técnicos derivados de las diferencias en la profundidad de secuenciación entre las 8 librerías han sido corregidos eficientemente. La alineación de las medianas confirma la efectividad del proceso de normalización.
-        \begin{figure}[h]
+    \item \textbf{Boxplots de distribución de expresión:} Se generaron dos boxplots comparando la distribución de expresión génica antes y después de la normalización TMM (\textit{edgeR}). Ambas distribuciones presentan un aspecto muy similar, lo cual es una señal positiva: indica que las 8 librerías ya tenían tamaños similares entre sí y que los factores de normalización TMM calculados fueron muy próximos a 1.0. Cuando las librerías están bien equilibradas, la normalización no produce cambios visuales drásticos, sino que realiza ajustes finos para garantizar comparaciones válidas en análisis downstream.
+
+        \begin{figure}[H]
         \hspace{1cm}
         \begin{minipage}{0.45\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{imagenes/boxplot_normalized.png}
-            \captionof{figure}{Boxplot de distribución de expresión normalizada (TMM)}
+            \includegraphics[width=\textwidth]{imagenes/boxplot_raw.png}
+            \captionof{figure}{Distribución de expresión cruda (log2 CPM+1) para las 8 muestras. Las medianas y rangos intercuartílicos son homogéneos entre muestras, indicando librerías de tamaño similar.}
         \end{minipage}
+        \hspace{0.5cm}
         \begin{minipage}{0.45\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{imagenes/boxplot_raw.png}
-            \captionof{figure}{Boxplot de distribución de expresión cruda}
+            \includegraphics[width=\textwidth]{imagenes/boxplot_normalized.png}
+            \captionof{figure}{Distribución de expresión tras normalización TMM. Los leves ajustes confirman que las librerías estaban bien equilibradas y que la normalización fue efectiva.}
         \end{minipage}
         \end{figure}
-    \item \textbf{PCA (Análisis de Componentes Principales):} La reducción de dimensionalidad no supervisada separa de manera clara las muestras en función de la condición experimental. La principal fuente de varianza (Componente Principal 1, PC1) discrimina perfectamente entre las células musculares tratadas con dexametasona y las no tratadas. Esto confirma a nivel bioinformático que el tratamiento con el fármaco ejerce un profundo y consistente impacto en el perfil transcriptómico global, siendo la condición biológica el factor principal de variación por encima del efecto individual de los donantes.
-        \begin{figure}[h]
+
+    \item \textbf{PCA (Análisis de Componentes Principales):} El PCA no supervisado resume la variabilidad global del transcriptoma usando los 500 genes de mayor varianza. PC1 (29.9\% de varianza explicada) separa claramente las muestras \textit{Untreated} (azul) de las \textit{Dexamethasone} (naranja), confirmando que el tratamiento farmacológico es el principal factor de variación en el transcriptoma. PC2 (28.1\%) refleja la variabilidad entre donantes, coherente con el diseño pareado 4×2 del experimento.
+
+    Se observan dos muestras con comportamiento atípico: \texttt{SRR1039516} (donante N080611, Untreated) y \texttt{SRR1039517} (donante N08611, Dexamethasone). Ambas corresponden al mismo donante, pero sus identificadores presentan una discrepancia tipográfica en los metadatos originales de GEO (\texttt{N080611} vs \texttt{N08611}). Esta inconsistencia, junto con posibles diferencias técnicas en la calidad de secuenciación de ese donante, explicaría su separación del resto. El patrón general de separación por condición se mantiene para las 6 muestras restantes, por lo que este hallazgo no compromete la validez del análisis.
+
+        \begin{figure}[H]
             \centering
-            \includegraphics[width=0.4\textwidth]{imagenes/pca_plot.png}
-            \caption{PCA de las muestras basado en la matriz de cuentas normalizada}
+            \includegraphics[width=0.5\textwidth]{imagenes/pca_plot.png}
+            \caption{PCA no supervisado de las 8 muestras (500 genes de mayor varianza). PC1 separa por condición experimental (Dexamethasone vs Untreated) y PC2 refleja el efecto del donante. Las muestras SRR1039516 y SRR1039517 presentan comportamiento atípico, posiblemente relacionado con una discrepancia en los metadatos del donante.}
         \end{figure}
 \end{itemize}
 
