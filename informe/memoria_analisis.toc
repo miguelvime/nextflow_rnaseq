@@ -24,9 +24,9 @@
 \contentsline {section}{\numberline {7}Interpretación de los Resultados}{8}{section.7}%
 \contentsline {subsection}{\numberline {7.1}Interpretación del Control de Calidad (QC)}{8}{subsection.7.1}%
 \contentsline {subsection}{\numberline {7.2}Interpretación del Análisis Exploratorio (R)}{9}{subsection.7.2}%
-\contentsline {section}{\numberline {8}Instrucciones de Reproducción}{9}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Requisitos Previos}{9}{subsection.8.1}%
+\contentsline {section}{\numberline {8}Instrucciones de Reproducción}{10}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Requisitos Previos}{10}{subsection.8.1}%
 \contentsline {subsection}{\numberline {8.2}Ejecución Local (Docker)}{10}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Ejecución en HPC Picasso (Singularity)}{10}{subsection.8.3}%
-\contentsline {subsubsection}{\numberline {8.3.1}Contenido del script de lanzamiento (\texttt {script.sh})}{10}{subsubsection.8.3.1}%
-\contentsline {subsection}{\numberline {8.4}Ejecución del Análisis en R (Workaround)}{11}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.3}Ejecución en HPC Picasso (Singularity)}{11}{subsection.8.3}%
+\contentsline {subsubsection}{\numberline {8.3.1}Contenido del script de lanzamiento (\texttt {script.sh})}{11}{subsubsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.4}Ejecución del Análisis en R (Workaround)}{12}{subsection.8.4}%
